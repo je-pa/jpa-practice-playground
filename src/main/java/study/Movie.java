@@ -1,16 +1,20 @@
 package study;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.annotations.GeneratorType;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name="MOVIE")
 public class Movie {
-    @Id //Entity 는 반드시 식별자를 가져야한다.
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) //Entity 는 반드시 식별자를 가져야한다.
     @Column(name="MOVIE_ID")//매핑
     private Long movieId;
     @Column(name = "NAME")
     private String movieName;
+
+    @Transient
+    private int raking;
 
     public Long getMovieId() {
         return movieId;
