@@ -1,11 +1,11 @@
-package study;
+package study.movie;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class FindUpdateRemoveTest {
+public class PkTest {
     public static void main(String[] args) {
         EntityManagerFactory emf= Persistence.createEntityManagerFactory("playground");
         EntityManager em = emf.createEntityManager();
@@ -14,10 +14,15 @@ public class FindUpdateRemoveTest {
 
         try{
             tx.begin();
-            Movie findMovie = em.find(Movie.class, 1L);
-            System.out.println("findMovie = "+ findMovie);
-//            findMovie.setMovieName("로미오와줄리엣");
-//            em.remove(findMovie);
+            Movie movie1 = new Movie();
+            movie1.setMovieName("타이타닉");
+            em.persist(movie1);
+
+            Movie movie2 = new Movie();
+            movie2.setMovieName("오징어게임");
+            em.persist(movie2);
+
+            System.out.println("================");
             tx.commit();
         }catch(Exception e){
             tx.rollback();

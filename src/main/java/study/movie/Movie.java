@@ -1,4 +1,4 @@
-package study;
+package study.movie;
 
 import org.hibernate.annotations.GeneratorType;
 
