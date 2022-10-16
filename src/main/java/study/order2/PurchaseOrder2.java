@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class PurchaseOrder {
+public class PurchaseOrder2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PURCHASE_ORDER_ID")
@@ -13,8 +13,9 @@ public class PurchaseOrder {
 
     private String userName;
 
-    @OneToMany(mappedBy = "order")
-    private List<Item> items = new ArrayList<Item>();
+    @OneToMany()//mappedBy = "order" 제거 - 양방향 x
+    @JoinColumn(name="PURCHASE_ORDER_ID")
+    private List<Item2> items = new ArrayList<Item2>();
 
     public Long getId() {
         return id;
@@ -32,11 +33,11 @@ public class PurchaseOrder {
         this.userName = userName;
     }
 
-    public List<Item> getItems() {
+    public List<Item2> getItems() {
         return items;
     }
 
-    public void setItems(List<Item> items) {
+    public void setItems(List<Item2> items) {
         this.items = items;
     }
 }

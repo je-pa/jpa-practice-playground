@@ -14,22 +14,19 @@ public class OrderTest {
 
         try{
             tx.begin();
-            Item item1 = new Item();
+            Item2 item1 = new Item2();
             item1.setName("치킨");
-            Item item2 = new Item();
+            Item2 item2 = new Item2();
             item2.setName("치즈볼");
 
-            PurchaseOrder order = new PurchaseOrder();
+            PurchaseOrder2 order = new PurchaseOrder2();
             order.setUserName("kim");
             order.getItems().add(item1);
             order.getItems().add(item2);
 
-            item1.setOrder(order);
-            item2.setOrder(order);
-
-            em.persist(order);
-            em.persist(item1);
+            em.persist(item1); //JoinColumn 위해 먼저
             em.persist(item2);
+            em.persist(order);
 
             System.out.println("================");
             tx.commit();

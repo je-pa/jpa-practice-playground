@@ -3,7 +3,7 @@ package study.order2;
 import javax.persistence.*;
 
 @Entity
-public class Item {
+public class Item2 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ITEM_NO_ID")
@@ -11,9 +11,9 @@ public class Item {
     private String name;
     private int price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PURCHASE_ORDER_ID")
-    private PurchaseOrder order;
+    //@ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "PURCHASE_ORDER_ID")
+    //private PurchaseOrder order;
 
     public Long getId() {
         return id;
@@ -39,11 +39,11 @@ public class Item {
         this.price = price;
     }
 
-    public PurchaseOrder getOrder() {
-        return order;
-    }
-
-    public void setOrder(PurchaseOrder order) {
-        this.order = order;
-    }
+//    public PurchaseOrder getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(PurchaseOrder order) {
+//        this.order = order;
+//    }
 }
