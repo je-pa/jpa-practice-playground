@@ -29,6 +29,12 @@ public class OrderTest {
             em.persist(order);
 
             System.out.println("================");
+
+            em.flush();//중간에 반영
+            em.clear();
+
+            PurchaseOrder2 findOrder = em.find(PurchaseOrder2.class, 1L);
+            findOrder.getItems().remove(0);
             tx.commit();
         }catch(Exception e){
             tx.rollback();
